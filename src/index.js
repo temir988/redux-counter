@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case "INC":
+      return state + 1;
+    default:
+      return state;
+  }
+};
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let state = reducer(undefined, {});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+state = reducer(state, { type: "INC" });
+console.log(state);
+
+state = reducer(state, { type: "INC" });
+console.log(state);
